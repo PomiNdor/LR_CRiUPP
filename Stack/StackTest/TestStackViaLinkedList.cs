@@ -85,5 +85,33 @@ namespace StackTests
             bool actual = stack.Contains(item);
             Assert.AreEqual(expected, actual);
         }
+
+        [TestCase(new int[] { 1, 2, 3 }, 1, 2, 3)]
+        [TestCase(new int[] { 1 }, 1)]
+        [TestCase(new int[] { })]
+        public void TestEnumerable(int[] expected, params int[] collection)
+        {
+            IStack<int> stack = new StackViaLinkedList<int>(collection);
+            int i = 0;
+
+            foreach (var element in stack)
+            {
+                Assert.AreEqual(expected[i], element);
+                i++;
+            }
+        }
+
+        [Test]
+        public void TestCloneable()
+        {
+            IStack<int> stack = new StackViaLinkedList<int>(new int[] { 1,2,3 });
+            var stack_clone = (IStack<int>)stack.Clone();
+
+            Assert.AreEqual(stack, stack_clone);
+
+            stack.Pop();
+
+            Assert.AreNotEqual(stack, stack_clone);
+        }
     }
 }
