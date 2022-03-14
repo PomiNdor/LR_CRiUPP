@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace CRiUPP_lab_01
 {
-    public class StackViaLinkedList<T> : IStack<T>
+    public class StackViaLinkedList<T> : IStack<T>, IEnumerable<T>, ICloneable
     {
         LinkedList<T> _collection;
 
