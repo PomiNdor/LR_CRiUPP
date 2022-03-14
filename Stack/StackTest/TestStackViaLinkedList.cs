@@ -91,7 +91,7 @@ namespace StackTests
         [TestCase(new int[] { })]
         public void TestEnumerable(int[] expected, params int[] collection)
         {
-            IStack<int> stack = new StackViaLinkedList<int>(collection);
+            var stack = new StackViaLinkedList<int>(collection);
             int i = 0;
 
             foreach (var element in stack)
@@ -104,8 +104,8 @@ namespace StackTests
         [Test]
         public void TestCloneable()
         {
-            IStack<int> stack = new StackViaLinkedList<int>(new int[] { 1,2,3 });
-            var stack_clone = (IStack<int>)stack.Clone();
+            var stack = new StackViaLinkedList<int>(new int[] { 1,2,3 });
+            var stack_clone = (StackViaLinkedList<int>)stack.Clone();
 
             Assert.AreEqual(stack, stack_clone);
 

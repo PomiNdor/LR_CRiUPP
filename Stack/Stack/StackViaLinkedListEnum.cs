@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CRiUPP_lab_01
 {
-    public class StackViaLinkedListEnum<T> : IEnumerator<T>
+    public class StackViaLinkedListEnum<T> : IEnumerator<T>, IEnumerable<T>, ICloneable
     {
         LinkedList<T> _collection;
         int position = -1;
