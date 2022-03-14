@@ -61,5 +61,25 @@ namespace CRiUPP_lab_01
         public void Clear() => _collection.Clear();
 
         public bool Contains(T item) => _collection.Contains(item);
+
+        IEnumerator<T> IEnumerable<T>.GetEnumerator()
+        {
+            return (IEnumerator<T>)GetEnumerator();
+        }
+
+        public StackViaLinkedListEnum<T> GetEnumerator()
+        {
+            return new StackViaLinkedListEnum<T>(_collection);
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return (IEnumerator<T>)GetEnumerator();
+        }
+
+        public object Clone()
+        {
+            return new StackViaLinkedList<T>(_collection);
+        }
     }
 }
