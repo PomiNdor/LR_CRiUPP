@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Collections;
+using System;
 
 namespace CRiUPP_lab_01
 {
-  public class StackViaArray<T>:IStack<T>
+  public class StackViaArray<T> : IStack<T>, IEnumerable<T>, ICloneable
   {
     List<T> _collection;
     public int Count
@@ -55,5 +57,16 @@ namespace CRiUPP_lab_01
     public void Clear() => _collection.Clear();
 
     public bool Contains(T item) => _collection.Contains(item);
+
+
+    public object Clone() 
+      => new StackViaArray<T>(this._collection);
+
+    public IEnumerator<T> GetEnumerator() => _collection.GetEnumerator();
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+      return ((IEnumerable)_collection).GetEnumerator();
+    }
   }
 }
